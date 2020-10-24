@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GrandPyBot</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+
+<body>
+  <h3>GrandPyBot</h3>
+
+  <div id="app_wrapper">
+    <div id="messages_wrapper">
+      <!-- Messages from AJAX here -->
+    </div>
+
+    <hr id="bottom_sep" />
+
+    <div id="message_flex">
+      <input type="text" id="message" name="message" placeholder="Enter message here" />
+      <button id="send_message_btn" onclick="ask()"></button>
+    </div>
+  </div>
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+</html>

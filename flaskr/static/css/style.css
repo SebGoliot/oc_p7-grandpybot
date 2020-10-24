@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+* {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: #073642;
+  color: #839496;
+  margin: 1em;
+}
+
+body {
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+#app_wrapper {
+  background-color: #002b36;
+  border: 2px solid #011a20;
+  border-radius: 8px;
+}
+
+#messages_wrapper {
+  min-height: 250px;
+  overflow-y: scroll;
+  max-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.5em;
+}
+
+.msg_div {
+  padding: 2px 4px;
+  margin: 5px 2px;
+  width: fit-content;
+  min-width: 150px;
+  border: 1px solid #839496;
+  border-radius: 5px;
+}
+
+.msg_header {
+  margin: 3px 0px;
+  font-size: small;
+  font-style: italic;
+}
+
+.msg_content{
+  margin: 0px 5px;
+}
+
+.You {
+  text-align: end;
+  align-self: flex-end;
+}
+
+
+
+#bottom_sep {
+  border: 1px solid #011a20;
+}
+
+#message_flex {
+  margin: 1em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#message {
+  flex-grow: 1;
+  height: 24px;
+  background-color: #073642;
+  border-style: none;
+  border-radius: 4px;
+  color: #839496;
+}
+
+#send_message_btn {
+  background-color: #011a20;
+  background-image: url('../svg/send-white-18dp.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 36px;
+  height: 24px;
+  border: 1px solid #011a20;
+  margin-left: 8px;
+}
+#send_message_btn:active {
+  background-color: #073642;
+}
