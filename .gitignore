@@ -125,3 +125,5 @@ dmypy.json
 
 # vscode related files
 .vscode/
+
+flaskr/secrets.py
