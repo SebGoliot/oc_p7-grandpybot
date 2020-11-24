@@ -14,15 +14,19 @@ class MapsData:
         request_args = {
             "input": request,
             "inputtype": "textquery",
-            "fields": "formatted_address",
+            "fields": "formatted_address,geometry",
             "key": maps_key,
         }
 
-        data = requests.get(url=MapsData.maps_place_api_uri, params=request_args)
+        data = requests.get(
+            url=MapsData.maps_place_api_uri, params=request_args
+        )
 
-        if data := data.json():
-            if address := data["candidates"][0]:
-                if formatted_address := address["formatted_address"]:
-                    return formatted_address
+        data = data.json().get("candidates")[0]
+        formatted_address = data.get("formatted_address")
+        location = data.get("geometry").get("location")
+
+        if formatted_address and location:
+            return (formatted_address, location)
 
         return None
