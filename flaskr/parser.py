@@ -13,6 +13,7 @@ class Parser:
         r"ou est ()(.*)",
         r"histoire (de|du|d) (.*)",
         r"a propos (de|du|d) (.*)",
+        r"adresse (de|du|d) (.*)",
     ]
 
     @classmethod
@@ -20,15 +21,25 @@ class Parser:
         """Returns the body of the request """
 
         request = cls._clean_request(request)
+        regex_out = cls._run_regex(cls._REGEX_PARSE, request)
 
-        for reg in cls._REGEX_PARSE:
+        if regex_out:
+            return regex_out
+
+        # If the parser doesn't get anything from the regex
+        # return the request without stopwords
+        return cls._remove_stopwords(request)
+
+    @staticmethod
+    def _run_regex(regex, request):
+        """Runs a list of regex against a request
+        returns the first successfull regex search
+        """
+
+        for reg in regex:
             regex_parse = re.search(reg, request)
             if regex_parse:
                 return regex_parse.group(2)
-
-        # If the parser doesn't get anything from the regex
-        # return the request without stopwords and try with this
-        return cls._remove_stopwords(request)
 
     @staticmethod
     def _clean_request(request):
