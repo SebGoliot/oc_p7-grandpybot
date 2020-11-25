@@ -46,4 +46,6 @@ class TestMapsData:
 
         monkeypatch.setattr(requests, "get", mock_request)
 
-        assert self.maps.get_address("openclassrooms") == test_address
+        assert (
+            self.maps.get_address_from_request("openclassrooms") == test_address
+        )

@@ -20,3 +20,4 @@ class TestParser:
     def test_parse_request(self):
         for request, result in self.parsing_requests_test:
             assert self.parser.parse_request(request) == result
+            assert self.parser.parse_request("salut") == None
