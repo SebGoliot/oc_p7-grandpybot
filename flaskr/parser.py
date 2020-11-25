@@ -40,6 +40,7 @@ class Parser:
             regex_parse = re.search(reg, request)
             if regex_parse:
                 return regex_parse.group(2)
+        return None
 
     @staticmethod
     def _clean_request(request):
@@ -56,5 +57,7 @@ class Parser:
 
         request = [word for word in request.split(" ") if word != ""]
         request = [word for word in request if word not in stop_words]
-        request = " ".join(request)
-        return request
+        if request:
+            return " ".join(request)
+
+        return None

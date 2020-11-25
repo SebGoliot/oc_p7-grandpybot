@@ -1,8 +1,7 @@
 import requests
 
-class WikiData:
-    
 
+class WikiData:
     @classmethod
     def get_page_desc_from_search(cls, request):
 
@@ -17,7 +16,7 @@ class WikiData:
             "redirects": 1,
         }
         data = cls.query_wiki(search_args)
-        return cls.get_desc(data)
+        return cls.extract_desc(data)
 
     @classmethod
     def get_page_id_from_position(cls, position):
@@ -51,17 +50,24 @@ class WikiData:
             "redirects": 1,
         }
         data = cls.query_wiki(search_args)
-        return cls.get_desc(data)
+        return cls.extract_desc(data)
 
+    @classmethod
+    def get_page_desc_from_position(cls, position):
+        page_id = cls.get_page_id_from_position(position)
+        desc = cls.get_page_desc_from_id(page_id)
+        return desc
 
     @staticmethod
-    def get_desc(data):
+    def extract_desc(data):
 
-        data = data["query"]["pages"]
-        extract = data[str(*data)]["extract"]
+        try:
+            data = data["query"]["pages"]
+            extract = data[str(*data)]["extract"]
+        except KeyError:
+            return None
 
         return extract.split("\n")[0]
-
 
     @staticmethod
     def query_wiki(search_args):
@@ -70,4 +76,3 @@ class WikiData:
         data = requests.get(url=wiki_api_uri, params=search_args)
 
         return data.json()
-
