@@ -1,4 +1,3 @@
-
 stop_words = [
     "salut",
     "bonjour",
@@ -9,7 +8,7 @@ stop_words = [
     "bot",
     "py",
     "ville",
-    "adresse"
+    "adresse",
 ]
 
 stop_words += [
