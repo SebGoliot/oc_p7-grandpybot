@@ -2,13 +2,14 @@ from flask import Flask, render_template, jsonify, request
 from .parser import Parser
 from .wiki_data import WikiData
 from .maps_data import MapsData
+from .secrets import maps_js_key
 
 app = Flask(__name__)
 
 
 @app.route("/")
 def home():
-    return render_template("home.html")
+    return render_template("home.html", maps_key=maps_js_key)
 
 
 @app.route("/ask", methods=["POST"])
@@ -39,4 +40,10 @@ def ask():
 
 
 def invalid_request():
-    return jsonify({"response": "J'ai dû oublier..."})
+    return jsonify(
+        {
+            "response": "J'ai dû oublier...",
+                    "position": None,
+                    "description": None
+        }
+    )

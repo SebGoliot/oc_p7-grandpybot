@@ -18,18 +18,28 @@ html {
 body {
   margin: 0 auto;
   max-width: 800px;
+  display: flex;
+  flex-direction: column;
 }
 
 #app_wrapper {
   background-color: #002b36;
   border: 2px solid #011a20;
   border-radius: 8px;
+  flex-grow: 1;
+}
+
+#map_wrapper{
+  margin-top: 12px;
+  height: 30vh;
+  border-radius: 8px;
+  flex-grow: 2;
 }
 
 #messages_wrapper {
   min-height: 250px;
   overflow-y: scroll;
-  max-height: 70vh;
+  height: 45vh;
   display: flex;
   flex-direction: column;
   margin-top: 0.5em;
@@ -93,4 +103,19 @@ body {
 }
 #send_message_btn:active {
   background-color: #073642;
+}
+
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #011a20;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #073642;
+  border-radius: 4px;
 }

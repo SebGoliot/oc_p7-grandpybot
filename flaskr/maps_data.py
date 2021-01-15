@@ -11,7 +11,7 @@ class MapsData:
 
     @staticmethod
     def get_address_from_request(
-        request,
+        request: str
     ) -> Union[Tuple[str, Dict[str, str]], None]:
 
         request_args = {
@@ -27,7 +27,7 @@ class MapsData:
             data = data.json().get("candidates")[0]
             formatted_address = data.get("formatted_address")
             location = data.get("geometry").get("location")
-        except KeyError:
+        except:
             return None
 
         if formatted_address and location:
