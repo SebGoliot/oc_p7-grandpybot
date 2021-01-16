@@ -12,7 +12,7 @@ Plusieurs fonctionnalités sont nécessaires pour la réalisation de ce projet:
 
 ---
 ## 3. Pré-requis
-Python >= 3.6  
+Python >= 3.8  
 Clés d'API Google Maps:  
 - Clé restreinte
     - Places API
