@@ -1,9 +1,11 @@
 from typing import Dict, Tuple, Union
 import requests
-from .secrets import maps_key
+from os import getenv
 
 
 class MapsData:
+
+    maps_key = getenv('MAPS_KEY')
 
     maps_api_uri = (
         "https://maps.googleapis.com/maps/api/place/findplacefromtext/json"
@@ -18,7 +20,7 @@ class MapsData:
             "input": request,
             "inputtype": "textquery",
             "fields": "formatted_address,geometry",
-            "key": maps_key,
+            "key": MapsData.maps_key,
         }
 
         data = requests.get(url=MapsData.maps_api_uri, params=request_args)

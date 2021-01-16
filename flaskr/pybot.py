@@ -2,10 +2,10 @@ from flask import Flask, render_template, jsonify, request
 from .parser import Parser
 from .wiki_data import WikiData
 from .maps_data import MapsData
-from .secrets import maps_js_key
+from os import getenv
 
 app = Flask(__name__)
-
+maps_js_key = getenv('MAPS_JS_KEY')
 
 @app.route("/")
 def home():

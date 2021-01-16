@@ -127,3 +127,5 @@ dmypy.json
 .vscode/
 
 flaskr/secrets.py
+
+keys.py
