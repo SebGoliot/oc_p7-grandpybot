@@ -5,9 +5,10 @@ $('#message').keydown(function(e) {
     }
 });
 
-get_map(42, 0, 2);
+get_map({lat:42, lng:0}, 2, false);
 
 var user = "You";
+
 
 function ask(){
     var question = $('#message').serializeArray()[0].value;
@@ -19,8 +20,16 @@ function ask(){
         dataType:'json',
         contentType: 'text/plain',
         data: question,
-        success: function(response){
-            add_msg('GrandPy', response);
+        success: function(answer){
+            add_msg('GrandPy', answer.response);
+            if(answer.position != null){
+                get_map(answer.position, 17);
+            }
+            if(answer.description != null){
+                setTimeout(function(){
+                    add_msg('GrandPy', answer.description);
+                }, 2500);
+            }
         },
         error: function(error){
             console.log(error);
@@ -28,29 +37,40 @@ function ask(){
     });
 }
 
+
 function add_msg(author, content){
 
     var dt = new Date();
     var time = dt.getHours() + ":" + dt.getMinutes();
 
     var msg = `
-    <div class="msg_div `+ author +`">
-      <p class="msg_header">`+ author +` - `+ time +`</p>
-      <p class="msg_content">`+ content +`</p>
-    </div>`;
+        <div class="msg_div `+ author +`">
+            <p class="msg_header">`+ author +` - `+ time +`</p>
+            <p class="msg_content">`+ content +`</p>
+        </div>
+        `;
     $('#messages_wrapper').append(msg);
-
-    if(author != user){
-        setTimeout(function(){
-            get_map(content.position.lat, content.position.lng, 15);
-        }, 250);
-    }
+    scroll_to_bottom();
 }
 
-function get_map(pos_lat, pos_lng, zoom_level){
-    new google.maps.Map(document.getElementById('map_wrapper'), {
-        center: { lat: pos_lat, lng: pos_lng },
+
+function scroll_to_bottom(){
+    scrollingElement = document.getElementById('messages_wrapper');
+    scrollingElement.scrollTop = scrollingElement.scrollHeight;
+}
+
+
+function get_map(pos_lat_lng, zoom_level, show_marker=true){
+    const map = new google.maps.Map(document.getElementById('map_wrapper'), {
+        center: pos_lat_lng,
         zoom: zoom_level,
     });
+    if(show_marker == true){
+        new google.maps.Marker({
+            position: pos_lat_lng,
+            map,
+            title: "Hello World!",
+        });
+    }
 }
 

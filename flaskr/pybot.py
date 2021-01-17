@@ -25,9 +25,11 @@ def ask():
 
         if address := MapsData.get_address_from_request(user_request):
             page_id = WikiData.get_page_id_from_position(address[1])
-            desc = WikiData.get_page_desc_from_id(page_id)
+            if desc := WikiData.get_page_desc_from_id(page_id):
+                desc = f"Oh, et j'ai failli oublier :\n{desc}"
 
             response = f"Bien sûr mon poussin ! Voici son adresse :\n {address[0]}"
+            
             return jsonify(
                 {
                     "response": response,
