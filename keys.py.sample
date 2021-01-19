@@ -1,0 +1,5 @@
+# Sample keys file
+# This file should be used for local debug purposes only
+
+maps_key = "PLACES_API_KEY_HERE"
+maps_js_key = "MAPS_JS_API_KEY_HERE"
