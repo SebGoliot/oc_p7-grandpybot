@@ -40,7 +40,7 @@ class TestWikiData:
             self.wiki_data.extract_desc(self.test_data) == self.wiki_desc_test
         )
 
-    # TODO Useless !??
+
     def test_query_wiki(self, monkeypatch):
         """Check that the query_wiki returns the correct data """
 
@@ -54,6 +54,7 @@ class TestWikiData:
         monkeypatch.setattr(requests, "get", mock_request)
 
         assert self.wiki_data.query_wiki("mucem") == self.test_data
+
 
     def test_get_page_desc(self, monkeypatch):
         """Check if we can get a correct description from a search or an id"""
@@ -75,6 +76,7 @@ class TestWikiData:
         assert (
             self.wiki_data.get_page_desc_from_id(5036603) == self.wiki_desc_test
         )
+
 
     def test_get_page_id_from_position(self, monkeypatch):
         """Check that the get_page_id_from_position returns the correct page id

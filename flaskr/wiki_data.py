@@ -4,6 +4,7 @@ import requests
 class WikiData:
     @classmethod
     def get_page_desc_from_search(cls, request):
+        """Get a Wikipedia page description from a search"""
 
         search_args = {
             "action": "query",
@@ -20,6 +21,7 @@ class WikiData:
 
     @classmethod
     def get_page_id_from_position(cls, position):
+        """Get a Wikipedia page id from a position"""
 
         search_args = {
             "action": "query",
@@ -39,6 +41,7 @@ class WikiData:
 
     @classmethod
     def get_page_desc_from_id(cls, page_id):
+        """Get a Wikipedia page description from an id"""
 
         search_args = {
             "action": "query",
@@ -54,12 +57,15 @@ class WikiData:
 
     @classmethod
     def get_page_desc_from_position(cls, position):
+        """Get a Wikipedia page description from a position"""
+
         page_id = cls.get_page_id_from_position(position)
         desc = cls.get_page_desc_from_id(page_id)
         return desc
 
     @staticmethod
     def extract_desc(data):
+        """Extract description from a Wikipedia page"""
 
         try:
             data = data["query"]["pages"]
@@ -71,6 +77,7 @@ class WikiData:
 
     @staticmethod
     def query_wiki(search_args):
+        """Send a request to the Wikipedia API"""
 
         wiki_api_uri = "https://fr.wikipedia.org/w/api.php"
         data = requests.get(url=wiki_api_uri, params=search_args)

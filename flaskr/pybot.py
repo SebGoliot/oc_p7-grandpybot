@@ -9,11 +9,14 @@ maps_js_key = getenv('MAPS_JS_KEY')
 
 @app.route("/")
 def home():
+    """Main route loading the index"""
+
     return render_template("home.html", maps_key=maps_js_key)
 
 
 @app.route("/ask", methods=["POST"])
 def ask():
+    """AJAX route to query Grandpy"""
 
     msg = request.get_data().decode("utf-8")
     desc, address = None, None
@@ -29,6 +32,11 @@ def ask():
                 desc = f"Oh, et j'ai failli oublier :\n{desc}"
 
             response = f"Bien sûr mon poussin ! Voici son adresse :\n {address[0]}"
+
+            if response:
+                response.replace('\n', '<br>')
+            if desc:
+                desc.replace('\n', '<br>')
             
             return jsonify(
                 {

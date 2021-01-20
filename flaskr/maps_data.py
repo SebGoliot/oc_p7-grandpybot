@@ -15,6 +15,7 @@ class MapsData:
     def get_address_from_request(
         request: str
     ) -> Union[Tuple[str, Dict[str, str]], None]:
+        """Get an address and location from a request"""
 
         request_args = {
             "input": request,

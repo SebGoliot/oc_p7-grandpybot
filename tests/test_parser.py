@@ -15,9 +15,11 @@ class TestParser:
             ("Raconte moi l'histoire d'Avignon.", "avignon"),
             ("Qu'est-ce que tu peux me dire à propos de Nice?", "nice"),
             ("Adresse de la Poste à Arles", "la poste a arles"),
+            ("Salut Grandpy", None)
         ]
 
     def test_parse_request(self):
+        """Check that the parser returns meaningful information"""
+        
         for request, result in self.parsing_requests_test:
             assert self.parser.parse_request(request) == result
-            assert self.parser.parse_request("salut") == None
