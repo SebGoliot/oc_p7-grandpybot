@@ -12,7 +12,6 @@ html, body {
 html {
   background-color: #073642;
   color: #839496;
-  margin: 1em;
 }
 
 body {
@@ -20,6 +19,43 @@ body {
   max-width: 800px;
   display: flex;
   flex-direction: column;
+  height: 100vh;
+}
+
+a {
+  color: #b1950c;
+  text-decoration: none;
+}
+a:visited {
+  color: #0a6b83;
+}
+
+header, #app_wrapper, footer {
+  background-color: #002b36;
+  border: 2px solid #011a20;
+  border-radius: 8px;
+}
+
+header, footer {
+  margin: 8px 0px;
+  display: flex;
+  justify-content: space-between;
+}
+
+header > img {
+  width: 50px;
+  height: 50px;
+  padding: 6px 6px 0px 6px;
+}
+
+header > p, footer > p {
+  margin: 0;
+  padding: 6px;
+}
+
+footer > a {
+  padding: 6px;
+  align-self: flex-end;
 }
 
 #app_wrapper {
@@ -27,19 +63,23 @@ body {
   border: 2px solid #011a20;
   border-radius: 8px;
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  justify-content: space-between;
 }
 
 #map_wrapper{
-  margin-top: 12px;
-  height: 30vh;
+  margin-top: 8px;
+  min-height: 30vh;
   border-radius: 8px;
   flex-grow: 2;
 }
 
 #messages_wrapper {
-  min-height: 250px;
+  min-height: 50px;
+  height: 100%;
   overflow-y: scroll;
-  height: 45vh;
   display: flex;
   flex-direction: column;
   margin-top: 0.5em;
@@ -52,6 +92,8 @@ body {
   min-width: 150px;
   border: 1px solid #839496;
   border-radius: 5px;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .msg_header {
@@ -67,12 +109,32 @@ body {
 .You {
   text-align: end;
   align-self: flex-end;
+  flex-direction: row;
 }
 
+.GrandPy {
+  flex-direction: row-reverse;
+}
 
+.profile {
+  height: 64px;
+  width: 64px;
+  align-self: flex-end;
+}
+
+.You > .profile {
+  content:url("/static/img/You.png");
+}
+
+.GrandPy > .profile {
+  content:url("/static/img/GrandPy.png");
+}
 
 #bottom_sep {
   border: 1px solid #011a20;
+  margin: 0;
+  width: -webkit-fill-available;
+
 }
 
 #message_flex {

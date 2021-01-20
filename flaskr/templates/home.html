@@ -7,24 +7,35 @@
   <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='svg/favicon.svg') }}">
   <title>GrandPyBot</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/spinner.css') }}" />
 </head>
 
 <body>
-  <h3>GrandPyBot</h3>
+
+  <header>
+    <img src="{{ url_for('static', filename='img/GrandPy.png')}}" alt="GrandPyBot">
+    <p>GrandPyBot<br>Le Papy-Robot devenu maître de GeoGuessr.</p>
+    
+  </header>
 
   <div id="app_wrapper">
     <div id="messages_wrapper">
       <!-- Messages from AJAX here -->
     </div>
 
-    <hr id="bottom_sep" />
+    
 
+    <hr id="bottom_sep" />
     <div id="message_flex">
-      <input type="text" id="message" name="message" placeholder="Enter message here" />
+      <input type="text" id="message" name="message" placeholder="Posez votre question ici" />
       <button id="send_message_btn" onclick="ask()"></button>
     </div>
   </div>
   <div id="map_wrapper"></div>
+  <footer>
+    <p>Créé par Sebastien Goliot</p>
+    <a href="https://github.com/sebgoliot/oc_p7-grandpybot">Check it on Github !</a>
+  </footer>
 </body>
 <script src="https://maps.googleapis.com/maps/api/js?key={{ maps_key }}&v=weekly"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
