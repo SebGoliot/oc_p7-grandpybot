@@ -29,7 +29,7 @@ class WikiData:
             "format": "json",
             "list": "geosearch",
             "gscoord": f"{position['lat']}|{position['lng']}",
-            "gsradius": "100",
+            "gsradius": "250",
             "gslimit": "1",
         }
         data = cls.query_wiki(search_args)
