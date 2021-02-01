@@ -42,7 +42,8 @@ def ask():
                 {
                     "response": response,
                     "position": address[1],
-                    "description": desc
+                    "description": desc,
+                    "page_id": page_id
                 }
             )
 
@@ -53,7 +54,8 @@ def invalid_request():
     return jsonify(
         {
             "response": "J'ai dû oublier...",
-                    "position": None,
-                    "description": None
+            "position": None,
+            "description": None,
+            "page_id": None
         }
     )

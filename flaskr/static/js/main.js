@@ -30,7 +30,8 @@ function ask(){
                 thinking(true);
                 setTimeout(function(){
                     thinking(false);
-                    add_msg('GrandPy', answer.description);
+                    desc = fmt_wiki_desc_and_link(answer.description, answer.page_id)
+                    add_msg('GrandPy', desc);
                 }, 2500);
             }
         },
@@ -40,6 +41,17 @@ function ask(){
     });
 }
 
+
+function fmt_wiki_desc_and_link(desc, page_id){
+    var wiki_link = `
+        <br>
+        [<a href='https://fr.wikipedia.org/?curid=`+ page_id +`'
+            target="_blank" rel="noopener noreferrer">
+            En savoir plus sur Wikipedia
+        </a>]
+    `;
+    return desc + wiki_link;
+}
 
 function add_msg(author, content){
 
