@@ -10,6 +10,9 @@ get_map({lat:42, lng:0}, 2, false);
 var user = "You";
 
 function ask(){
+    // This function is called everytime the user sends a message to GrandPy
+    // It performs an AJAX request and then processes the answer
+
     var question = $('#message').serializeArray()[0].value;
     $('#message').val('');
     add_msg(user, question);
@@ -27,6 +30,8 @@ function ask(){
                 get_map(answer.position, 17);
             }
             if(answer.description != null){
+                // If there is a description available for the current request,
+                // Grandpy "thinks" for 2.5sec, then sends more information.
                 thinking(true);
                 setTimeout(function(){
                     thinking(false);
@@ -43,6 +48,9 @@ function ask(){
 
 
 function fmt_wiki_desc_and_link(desc, page_id){
+    // Formats the description and link to a single string element that
+    // can be used in the add_msg function below
+
     var wiki_link = `
         <br>
         [<a href='https://fr.wikipedia.org/?curid=`+ page_id +`'
@@ -54,6 +62,7 @@ function fmt_wiki_desc_and_link(desc, page_id){
 }
 
 function add_msg(author, content){
+    // Adds a message at the bottom of the messages "window"
 
     var dt = new Date();
     var time = dt.getHours() + ":" + dt.getMinutes();
@@ -73,12 +82,17 @@ function add_msg(author, content){
 
 
 function scroll_to_bottom(){
+    // This function ensures the "chat window" scrolls to the last messages
+    // each time a new message is sent.
+
     scrollingElement = document.getElementById('messages_wrapper');
     scrollingElement.scrollTop = scrollingElement.scrollHeight;
 }
 
 
 function thinking(start){
+    // Function used to handle the "thinking" animation
+
     if (start == true) {
         var loader = `
         <div class="loader_wrapper">
@@ -94,6 +108,8 @@ function thinking(start){
 
 
 function get_map(pos_lat_lng, zoom_level, show_marker=true){
+    // Function handling the Google Maps "window"
+
     const map = new google.maps.Map(document.getElementById('map_wrapper'), {
         center: pos_lat_lng,
         zoom: zoom_level,
@@ -102,7 +118,6 @@ function get_map(pos_lat_lng, zoom_level, show_marker=true){
         new google.maps.Marker({
             position: pos_lat_lng,
             map,
-            title: "Hello World!",
         });
     }
 }

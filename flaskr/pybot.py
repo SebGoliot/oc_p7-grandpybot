@@ -19,7 +19,6 @@ def ask():
     """AJAX route to query Grandpy"""
 
     msg = request.get_data().decode("utf-8")
-    desc, address = None, None
 
     if not msg:
         return invalid_request()
@@ -29,14 +28,9 @@ def ask():
         if address := MapsData.get_address_from_request(user_request):
             page_id = WikiData.get_page_id_from_position(address[1])
             if desc := WikiData.get_page_desc_from_id(page_id):
-                desc = f"Oh, et j'ai failli oublier :\n{desc}"
+                desc = f"Oh, et j'ai failli oublier :<br>{desc}"
 
-            response = f"Bien sûr mon poussin ! Voici son adresse :\n {address[0]}"
-
-            if response:
-                response.replace('\n', '<br>')
-            if desc:
-                desc.replace('\n', '<br>')
+            response = f"Bien sûr mon poussin ! Voici son adresse :<br> {address[0]}"
             
             return jsonify(
                 {
