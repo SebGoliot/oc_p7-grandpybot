@@ -33,8 +33,8 @@ Ces clés doivent respectivement être placées dans les variables d'environneme
 Pour lancer l'application en debug, il suffit de:
 - Créer un environnement virtuel: `python -m venv venv`
 - Activer cet environnement virtuel:
-    - Windows : .\venv\Scripts\Activate.ps1
-    - Linux / Mac : source venv/bin/activate
+    - Windows : `.\venv\Scripts\Activate.ps1`
+    - Linux / Mac : `source venv/bin/activate`
 - Installer les dépendances: `pip install -r requirements.txt`
 - Créer un fichier `keys.py` à la racine, avec les clés d'API en suivant l'exemple du fichier `keys.py.sample`
 - Lancer l'application: `python run.py`
@@ -46,4 +46,3 @@ Pour lancer l'application en production sur Heroku, il suffit de:
 - Forker/cloner le dépôt GitHub
 - Lier l'application Heroku au dépôt Github créé
 - Activer le déploiement automatique
-
