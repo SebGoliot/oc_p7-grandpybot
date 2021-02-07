@@ -1,4 +1,4 @@
-from flaskr.stop_words import stop_words
+from grandpy.stop_words import stop_words
 import re
 import unidecode
 

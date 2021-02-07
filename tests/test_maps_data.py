@@ -1,5 +1,5 @@
 import requests
-from flaskr.maps_data import MapsData
+from grandpy.maps_data import MapsData
 
 
 class TestMapsData:

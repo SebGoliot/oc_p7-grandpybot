@@ -1,4 +1,4 @@
-from flaskr.parser import Parser
+from grandpy.parser import Parser
 
 
 class TestParser:

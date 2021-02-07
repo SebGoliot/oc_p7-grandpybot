@@ -126,6 +126,6 @@ dmypy.json
 # vscode related files
 .vscode/
 
-flaskr/secrets.py
+grandpy/secrets.py
 
 keys.py

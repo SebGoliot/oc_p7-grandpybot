@@ -1,5 +1,5 @@
 import requests
-from flaskr.wiki_data import WikiData
+from grandpy.wiki_data import WikiData
 
 
 class TestWikiData:
